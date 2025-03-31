@@ -88,8 +88,7 @@ class _SliderButtonState extends State<SliderButton> {
         height: widget.height,
         width: widget.width,
         decoration: BoxDecoration(
-            color:
-                widget.disable ? Colors.grey.shade700 : widget.backgroundColor,
+            color: widget.disable ? Colors.grey.shade700 : widget.backgroundColor,
             borderRadius: BorderRadius.circular(widget.radius)),
         alignment: Alignment.centerLeft,
         child: Stack(
@@ -99,8 +98,7 @@ class _SliderButtonState extends State<SliderButton> {
               alignment: widget.alignLabel,
               child: widget.shimmer && !widget.disable
                   ? Shimmer.fromColors(
-                      baseColor:
-                          widget.disable ? Colors.grey : widget.baseColor,
+                      baseColor: widget.disable ? Colors.grey : widget.baseColor,
                       highlightColor: widget.highlightedColor,
                       child: widget.label ?? Text(''),
                     )
@@ -115,10 +113,7 @@ class _SliderButtonState extends State<SliderButton> {
                       height: (widget.height - 70),
                       alignment: Alignment.centerLeft,
                       padding: EdgeInsets.only(
-                        left: (widget.height -
-                                (widget.buttonSize == null
-                                    ? widget.height * 0.9
-                                    : widget.buttonSize)!) /
+                        left: (widget.height - (widget.buttonSize == null ? widget.height * 0.9 : widget.buttonSize)!) /
                             2,
                       ),
                       child: widget.child ??
@@ -132,8 +127,7 @@ class _SliderButtonState extends State<SliderButton> {
                                       ]
                                     : null,
                                 color: Colors.grey,
-                                borderRadius:
-                                    BorderRadius.circular(widget.radius)),
+                                borderRadius: BorderRadius.circular(widget.radius)),
                             child: Center(child: widget.icon),
                           ),
                     ),
@@ -141,9 +135,7 @@ class _SliderButtonState extends State<SliderButton> {
                 : Dismissible(
                     key: UniqueKey(),
                     direction: DismissDirection.startToEnd,
-                    dismissThresholds: {
-                      DismissDirection.startToEnd: widget.dismissThresholds
-                    },
+                    dismissThresholds: {DismissDirection.startToEnd: widget.dismissThresholds},
                     confirmDismiss: (_) async {
                       bool result;
                       try {
@@ -157,8 +149,7 @@ class _SliderButtonState extends State<SliderButton> {
                       setState(() {
                         flag = !flag;
                       });
-                      final hasVibrator =
-                          await Vibration.hasVibrator() ?? false;
+                      final hasVibrator = await Vibration.hasVibrator();
                       if (widget.vibrationFlag && hasVibrator) {
                         try {
                           Vibration.vibrate(duration: 200);
@@ -169,16 +160,11 @@ class _SliderButtonState extends State<SliderButton> {
                       return true;
                     },
                     child: Container(
-                      width:
-                          widget.width - (widget.buttonWidth ?? widget.height),
+                      width: widget.width - (widget.buttonWidth ?? widget.height),
                       height: widget.height,
                       alignment: Alignment.centerLeft,
                       padding: EdgeInsets.only(
-                        left: (widget.height -
-                                (widget.buttonSize == null
-                                    ? widget.height
-                                    : widget.buttonSize!)) /
-                            2,
+                        left: (widget.height - (widget.buttonSize == null ? widget.height : widget.buttonSize!)) / 2,
                       ),
                       child: widget.child ??
                           Container(
@@ -191,8 +177,7 @@ class _SliderButtonState extends State<SliderButton> {
                                       ]
                                     : null,
                                 color: widget.buttonColor,
-                                borderRadius:
-                                    BorderRadius.circular(widget.radius)),
+                                borderRadius: BorderRadius.circular(widget.radius)),
                             child: Center(child: widget.icon),
                           ),
                     ),
